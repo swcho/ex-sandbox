@@ -15,3 +15,32 @@ $ pnpm analyze
 두벌 들어가 있음
 
 ![](2023-02-24-22-46-22.png)
+
+> [Exact same dependencies across different packages are all bundled instead of just 1? · Discussion #6055 · pnpm/pnpm](https://github.com/pnpm/pnpm/discussions/6055)
+
+동일한 버전의 `peerDependencies`를 설치해 주어야 함.
+
+즉, 
+```
+      "@emotion/react": "^11.10.6",
+      "@emotion/styled": "^11.10.6",
+```
+
+최상위 `package.json`에 다음과 같이 `override` 설정필요
+
+```
+  "pnpm": {
+    "overrides": {
+      "@emotion/react": "^11.10.6",
+      "@emotion/styled": "^11.10.6",
+      "@mui/material": "^5.10.16",
+      "@types/react": "^18.0.26",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
+  }
+```
+
+`source-map-explorer` 결과
+
+![](2023-02-24-23-11-36.png)
