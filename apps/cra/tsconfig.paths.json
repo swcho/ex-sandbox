@@ -1,13 +1,22 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-
     "paths": {
-      "@nighttrax/components/*": ["../../packages/components/src/*"],
-      "@nighttrax/*": ["../../packages/*/src"],
-
-      "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@nighttrax/components/*": [
+        "../../packages/components/src/*"
+      ],
+      "@nighttrax/*": [
+        "../../packages/*/src"
+      ],
+      "@ex/mui/*": [
+        "../../packages/ex-mui/src/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ]
     }
   }
 }

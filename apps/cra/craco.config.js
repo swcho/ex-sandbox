@@ -3,6 +3,7 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const ForkTSCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const { pathsToModuleNameMapper } = require("ts-jest");
 const { compilerOptions } = require("./tsconfig.paths.json");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
   eslint: { enable: false },
@@ -23,6 +24,11 @@ module.exports = {
 
       tsRule.include = undefined;
       tsRule.exclude = /node_modules/;
+
+      if (process.env.STATS === "true") {
+        // eslint-disable-next-line no-param-reassign
+        config.stats = "normal";
+      }
 
       return config;
     },
@@ -54,6 +60,7 @@ module.exports = {
             ],
           },
         }),
+        ...(process.env.ANALYZE === "true" ? [new BundleAnalyzerPlugin()] : []),
       ],
     },
   },
