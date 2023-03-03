@@ -1,0 +1,58 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node-terminal",
+			"request": "launch",
+			"name": "Debug nextjs",
+			"cwd": "${workspaceRoot}/apps/nextjs",
+			"command": "pnpm dev",
+			"outFiles": [
+				"${workspaceRoot}/**/*",
+				"**/next-auth/**/*"
+			],
+			"resolveSourceMapLocations": [
+				"${workspaceRoot}/**",
+				"${workspaceRoot}/../next-auth/**/*",
+			],
+			// "sourceMapPathOverrides": {
+			// 	// "webpack://@nighttrax/nextjs-example/../../../next-auth/": "**/next-auth/**/*",
+			// 	"meteor://💻app/*": "${workspaceFolder}/*",
+			// 	"webpack:///./~/*": "${workspaceFolder}/node_modules/*",
+			// 	"webpack://?:*/*": "${workspaceFolder}/*"
+			// },
+			// "trace": true
+		},
+		{
+			"type": "node-terminal",
+			"request": "launch",
+			"name": "Debug nextjs with symlinks",
+			"cwd": "${workspaceRoot}/apps/nextjs",
+			"command": "pnpm --preserve-symlinks --preserve-symlinks-main dev",
+			"outFiles": [
+				"${workspaceRoot}/**/*",
+				"**/next-auth/**/*"
+			]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Debug nextjs with node symlinks",
+			"cwd": "${workspaceRoot}/apps/nextjs",
+			"runtimeExecutable": "node",
+			"runtimeArgs": [
+				"--preserve-symlinks",
+				"--preserve-symlinks-main",
+				"${workspaceRoot}/apps/nextjs/node_modules/next/dist/bin/next",
+				"dev"
+			],
+			// "outFiles": [
+			// 	"${workspaceRoot}/**/*",
+			// 	"**/next-auth/**/*"
+			// ]
+		}
+	]
+}
